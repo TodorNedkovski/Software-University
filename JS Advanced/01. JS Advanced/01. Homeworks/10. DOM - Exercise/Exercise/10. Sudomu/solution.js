@@ -30,14 +30,17 @@ function solve() {
 
         for (let row = 0; row < Math.sqrt(cells.length); row++) {
             for (let col = 0; col < Math.sqrt(cells.length); col++) {
+                if (cells[row * Math.sqrt(cells.length) + col].value.length > 1) {
+                    isValid = false;
+                }
                 field[row][col] = Number(cells[row * Math.sqrt(cells.length) + col].value);
             }
-
-            isValid = hasDuplicates(field[row]);
 
             if (!isValid) {
                 break;
             }
+
+            isValid = hasDuplicates(field[row]);
         }
 
         for (let col = 0; col < Math.sqrt(cells.length); col++) {
